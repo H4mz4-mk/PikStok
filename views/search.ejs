@@ -1,0 +1,43 @@
+<%- include("partials/header") %>
+
+  <section>
+    <div class="jumbotron">
+        <div class="container">
+            <h1 class="display-4">PikStok</h1>
+            <p class="lead">Get high quality pictures for your projects for free!</p>
+            <hr class="my-4">
+            <p>We power creativity for everyone.</p>
+            <form action="/results" method="GET">
+                <input class="form-control mr-sm-2"  name="search" type="search" placeholder="Search free high resolution pictures for free!" aria-label="Search">
+            </form>
+        </div>
+      </div>
+  </section>
+  <section>
+    <div class="container">
+      <div class="table-responsive-sm">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Image</th>
+              <th scope="col">Width & Height</th>
+              <!-- <th scope="col">Description</th> -->
+              <th scope="col">Full resolution</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% result["results"].forEach( function(picture){ %>
+            <tr>
+              <th scope="row"><img src="<%=picture.urls.thumb%>" ></th>
+              <td><%= picture.width %> x <%= picture.height %></td>
+              <!-- <td style="width: 500px;"><%= picture.description%></td> -->
+              <td><a href="<%=picture.urls.full%>" class="btn btn-primary">Link</a></td>
+            </tr>
+            <% }); %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+<%- include("partials/footer") %>
